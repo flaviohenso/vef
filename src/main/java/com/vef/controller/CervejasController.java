@@ -18,24 +18,20 @@ import com.vef.model.Cerveja;
 public class CervejasController {
 
 	@GetMapping("/cerveja/novo")
-	public String novo() {
+	public String novo(Cerveja cerveja) {
+		//model.addAttribute(new Cerveja());
 		return "cerveja/cadastro"; //forward: padrão do Spring, retorna a pagina para exibição
 	}
 	
 	
 	@PostMapping("/cerveja/novo")
-	public String cadastrar(@Valid Cerveja cerveja, BindingResult bindingResult, Model model, RedirectAttributes attributes) {		
+	public String cadastrar(@Valid Cerveja cerveja, BindingResult bindingResult, Model model, RedirectAttributes attributes) {	
+		
+		model.addAttribute(cerveja);
+		
 		if(bindingResult.hasErrors()) {
 			//model.addAttribute("menssage","Erro no Formulário");
-			
-
-			for (Iterator iterator = bindingResult.getAllErrors().iterator(); iterator.hasNext();) {
-				ObjectError erro = (ObjectError) iterator.next();
-				System.out.println(erro.getObjectName());
-				System.out.println(erro.getDefaultMessage());
-			}
-			
-			return "cerveja/cadastro";
+			return this.novo(cerveja);
 		}
 		
 		//model.addAttribute("menssage","Sucesso ao salvar Cerveja"); //Não funciona para redirect

@@ -4,21 +4,31 @@
 	xmlns:th="http://www.thymeleaf.org">
 <body>
 	<h1>Olá mundo</h1>
-	<form method="post">
+
+<!-- 	<div th:each="erro : ${#fields.detailedErrors('${cerveja.*}')}"> -->
+<!-- 		<span th:text="${erro.message}"></span> -->
+<!-- 	</div> -->
+
+	<form method="post" th:object="${cerveja}">
+
+		<div th:each="erro : ${#fields.detailedErrors()}">
+			<span th:text="${erro.message}"></span>
+		</div>
+		
 		
 		<span th:text="${menssage}"></span>
-		</br>
+		</br> 
 		<label for="sku">Sku</label>
-		<input type="text" name="sku"/>
+		<input type="text" th:field="*{sku}" />
 		</br>
 		<label for="nome">Nome</label>
-		<input type="text" name="nome"/>
+		<input type="text" th:field="*{nome}" />
 		</br>
 		<label for="descricao">Descrição</label>
-		<textarea rows="5" cols="25" name="descricao"></textarea>
+		<textarea rows="5" cols="25" th:field="*{descricao}"></textarea>
 		</br>
 		<button>salvar</button>
 	</form>
-	
+
 </body>
 </html>

@@ -12,7 +12,7 @@ public class Cerveja {
 	public Cerveja() {
 	}
 
-	@NotBlank	
+	@NotBlank(message = "SKU é Obrigatório")	
 	public String getSku() {
 		return sku;
 	}
@@ -21,7 +21,7 @@ public class Cerveja {
 		this.sku = sku;
 	}
 
-	@NotBlank
+	@NotBlank(message = "Nome é obrigatório")
 	public String getNome() {
 		return nome;
 	}
@@ -30,7 +30,7 @@ public class Cerveja {
 		this.nome = nome;
 	}
 
-	@Size(max = 50)
+	@Size(max = 50,message = "A Descrição não deve passar de 50 caracteres")
 	public String getDescricao() {
 		return descricao;
 	}
