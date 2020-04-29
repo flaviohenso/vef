@@ -21,6 +21,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import com.vef.controller.CervejasController;
 
 import javassist.tools.web.Viewer;
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
 @ComponentScan(basePackageClasses = { CervejasController.class })
@@ -42,6 +43,8 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		SpringTemplateEngine engine = new SpringTemplateEngine();
 		engine.setEnableSpringELCompiler(true);
 		engine.setTemplateResolver(this.templateResolver());
+		
+		engine.addDialect(new LayoutDialect());
 		return engine;
 	}
 
