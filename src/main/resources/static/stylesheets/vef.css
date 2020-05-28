@@ -1,0 +1,19 @@
+/*
+##########
+#Componentes
+*/
+
+/* Filed Action */
+
+.vef-field-action {
+	display: flex;
+}
+
+.vef-field-action__icon {
+	margin: 6px 0 0 5px;
+	align-content: center;
+}
+
+.glyphicon-plus-sign {
+	font-size: 18px;
+}

@@ -4,7 +4,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/LayoutPadrao">
-
+	
 <body>
 
 	<section layout:fragment="conteudo">
@@ -44,18 +44,32 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="form-group">
-							<label>Estilo*</label> <select class="form-control">
-								<option>teste</option>
-								<option>teste</option>
-							</select>
+							<label for="estilo">Estilo*</label>
+							<div class="vef-field-action">
+								<select class="form-control">
+									<option>teste</option>
+									<option>teste</option>
+								</select>
+								<div class="vef-field-action__icon">
+									<a href="#" data-toggle="modal" data-target="#modalQuickEstilo"> <i class="glyphicon glyphicon-plus-sign vef-glyphicon-large"></i>
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="col-sm-3">
 						<div class="form-group">
-							<label>Sabor*</label> <select class="form-control">
-								<option>teste</option>
-								<option>teste</option>
-							</select>
+							<label for="sabor">Sabor*</label>
+							<div class="vef-field-action">
+								<select class="form-control">
+									<option>teste</option>
+									<option>teste</option>
+								</select>
+								<div class="vef-field-action__icon">
+									<a href="#"> <i class="glyphicon glyphicon-plus-sign"></i>
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="col-sm-3">
@@ -114,7 +128,7 @@
 				</div>
 
 				<div class="form-group">
-					<button class="btn  btn-primary" type="submit">Salvar</button>
+					<button class="btn  btn-primary" type="submit">Save</button>
 				</div>
 
 			</form>
@@ -128,7 +142,9 @@
 			<span th:text="${menssage}"></span>
 
 		</div>
-
+	
+	<div th:replace="modal/quickRegistration :: modal"></div>
+	
 	</section>
 
 </body>

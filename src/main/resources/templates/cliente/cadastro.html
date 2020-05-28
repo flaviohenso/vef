@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/LayoutPadrao">
+
+<title>Cadastro de Cliente</title>
+
+<body>
+
+	<section layout:fragment="conteudo">
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Cadastro de Cliente</h1>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+
+			<form method="post" th:object="${cliente}"
+				class="form-vertical  js-form-loading">
+
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<label for="nome">Nome*</label> <input type="text"
+								th:field="*{nome}" id="nome" class="form-control" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label>Tipo pessoa</label>
+							<div>
+								<div class="radio radio-inline">
+									<input type="radio" class="form-control" name="tipoPessoa" />
+									<label>Física</label>
+								</div>
+								<div class="radio radio-inline">
+									<input type="radio" class="form-control" name="tipoPessoa" />
+									<label>Jurídica</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group col-sm-8">
+						<label for="cpf_cnpj">CPF/CNPJ*</label> <input
+							th:field="*{cpf_cnpj}" class="form-control" id="cpf_cnpj" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="telefone">Telefone*</label> <input type="text"
+								th:field="*{telefone}" id="telefone" class="form-control" />
+						</div>
+					</div>
+
+					<div class="col-sm-8">
+						<div class="form-group">
+							<label for="email">E-mail*</label> <input type="text"
+								th:field="*{email}" id="email" class="form-control" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="logradouro">logradouro*</label> <input type="text"
+								th:field="*{endereco.logradouro}" id="logradouro" class="form-control" />
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="numero">Número*</label> <input type="text"
+								th:field="*{endereco.numero}" id="numero" class="form-control" />
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="complemento">Complemeno</label> <input type="text"
+								th:field="*{endereco.complemento}" id="complemento" class="form-control" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="cep">CEP</label> <input type="text" th:field="*{endereco.cep}"
+								id="cep" class="form-control" />
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="estado">Estado*</label>
+							<div class="vef-field-action">
+								<select class="form-control">
+									<option>teste</option>
+									<option>teste</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="form-group">
+							<label for="cidade">Cidade</label>
+							<div class="vef-field-action">
+								<select class="form-control">
+									<option>teste</option>
+									<option>teste</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Save</button>
+				</div>
+
+			</form>
+
+
+			<div th:each="erro : ${#fields.detailedErrors()}">
+				<span th:text="${erro.message}"></span>
+			</div>
+
+
+			<span th:text="${menssage}"></span>
+
+		</div>
+
+		<div th:replace="modal/quickRegistration :: modal"></div>
+
+	</section>
+
+</body>
+</html>
